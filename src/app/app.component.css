@@ -1,0 +1,10 @@
+.background-wrapper {
+    background-image: url(/assets/Img/12.jpg);
+    width: 600px;
+    height: 800px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+    width: 100%;
+  }

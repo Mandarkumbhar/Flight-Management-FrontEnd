@@ -1,0 +1,186 @@
+<!--
+
+          <form name="editForm" 
+          #f(ngSubmit)="onSubmit()">
+            <fieldset>
+              <legend>Flight Information</legend>
+        
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="carrierNameId">Carrier Name</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="carrierNameId"
+                         type="text"
+                         placeholder="Name (required)"
+                         required
+                         minlength="3"
+                         [(ngModel)]="carrierName"
+                         #carrierNameVar="ngModel"
+                         [ngClass]="{'is-invalid': (carrierNameVar.touched || 
+                                                    carrierNameVar.dirty ||
+                                                    flight.flightId !== 0) && 
+                                                    !carrierNameVar.valid }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="carrierNameVar.errors?.required">
+                      Carrier Name is required.
+                    </span>
+                    <span *ngIf="carrierNameVar.errors?.minlength">
+                      Carrier name must be at least three characters.
+                    </span>
+                  </span>
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="flightModelId">Flight Model</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="flightModelId"
+                         type="text"
+                         placeholder="Model (required)"
+                         required
+                         [(ngModel)]="flightModel"
+                         #flightModelVar="ngModel"
+                         [ngClass]="{'is-invalid': (flightModelVar.touched || 
+                                                    flightModelVar.dirty ||
+                                                    flight.flightId !== 0) &&
+                                                    !flightModelVar.valid }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="flightModelVar.errors?.required">
+                      Flight Model is required.
+                    </span>
+                  </span>
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label"
+                       for="seatCapacityId">Seating Capacity</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="seatCapacityId"
+                         type="text"
+                         placeholder="Seat Capacity (required)"
+                         required
+                         [(ngModel)]="seatCapacity"
+                         #seatCapacityVar="ngModel"
+                         [ngClass]="{'is-invalid': (seatCapacityVar.touched || 
+                                                    seatCapacityVar.dirty ||
+                                                    flight.flightId !== 0) &&
+                                                    !seatCapacityVar.valid }" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="seatCapacityVar.errors?.required">
+                      Seating Capacity is required.
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        
+        <div class='alert alert-danger'
+             *ngIf='errorMessage'>{{errorMessage}}
+        </div>
+  
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <button class="btn btn-primary mr-3"
+                  style="width:80px"
+                  type="button"
+                  title="Add your entered data"
+                  [disabled]="!editForm.valid"
+                  (click)="onSubmit()">
+            Add
+          </button>
+          <button class="btn btn-outline-secondary mr-3"
+                  style="width:80px"
+                  type="button"
+                  title="Cancel your edits"
+                  (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">{{errorMessage}}
+  </div>-->
+  
+
+  <div class="col-md-6 user-container">
+    <h2 class="text-center">Add Flight</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      
+      <!--<div class="form-group">
+        <label for="carrierName">Carrier Name:</label>
+        <input type="text" 
+                formControlName="carrierName" 
+                placeholder="carrierName" 
+                name="carrierName" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': submitted && carrierName.errors}"
+                id="carrierName" />
+
+                <div *ngIf="carrierName.invalid && (carrierName.dirty || carrierName.touched)"
+                      class="alert alert-danger">
+  
+                        <div *ngIf="carrierName.errors?.required">
+                            Carrier Name is required and must be at least 3 characters and should not exceed 20 characters.
+                        </div>
+                  </div>
+        </div>-->
+
+      <div class="form-group">
+        <label for="carrierName">Carrier Name:</label>
+        <input type="text" formControlName="carrierName" placeholder="carrierName" name="carrierName" class="form-control" id="carrierName" >
+        <div *ngIf="carrierName.invalid && (carrierName.dirty || carrierName.touched)"
+          class="alert alert-danger">
+  
+        <div *ngIf="carrierName.errors?.required">
+          Carrier Name is required and must be at least 3 characters and should not exceed 20 characters.
+        </div>
+        <div *ngIf="f.carrierName.errors?.minlength">
+          Carrier Name must be at least 3 characters
+        </div>
+        <div *ngIf="f.carrierName.errors?.maxlength">
+          Carrier Name cannot exceed 20 characters</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="flightModel">Flight Model:</label>
+        <input type="text" formControlName="flightModel" placeholder="flightModel" name="flightModel" class="form-control" id="flightModel" >
+        <div *ngIf="flightModel.invalid && (flightModel.dirty || flightModel.touched)"
+          class="alert alert-danger">
+  
+        <div *ngIf="flightModel.errors?.required">
+          Flight Model is required.
+        </div>
+      </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="seatCapacity">Seating Capacity:</label>
+        <input type="number" formControlName="seatCapacity" placeholder="seatCapacity" name="seatCapacity" class="form-control" id="seatCapacity" >
+        <div *ngIf="seatCapacity.invalid && (seatCapacity.dirty || seatCapacity.touched)"
+          class="alert alert-danger">
+  
+        <div *ngIf="seatCapacity.errors?.required">
+          Seat Capacity is required.
+        </div>
+      </div>
+    </div>
+      
+  
+      
+      <input type="submit" value="Add" class="btn btn-success" [disabled]="!editForm.valid">
+      <input type="Button" value="Cancel" class="btn btn-primary" (click)="onCancel()">
+    </form>
+  </div>
+  

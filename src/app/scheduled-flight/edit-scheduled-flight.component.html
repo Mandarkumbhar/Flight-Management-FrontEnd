@@ -1,0 +1,82 @@
+
+<div class=" col-md-6 card justify-content-center">
+  <div class="card-header">
+    <h4 class="text-center">Edit Scheduled flight</h4>
+  </div>
+
+  <div class=" card-body">
+<div class=" user-container">
+    
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="scheduledFlightIdLong" placeholder="id" name="id" class="form-control" id="id" readonly="true">
+      </div>
+      <div class="form-group">
+        <label for="availableSeats">Available Seats:</label>
+        <input type="text" formControlName="availableSeats" placeholder="Available Seats" name="availableSeats" class="form-control" id="username" >
+      </div>
+      <div formGroupName="flight">
+        Flight Id:
+        <div class="form-group">
+          <select class="custom-select"  formControlName="flightId">
+           <option value="" disabled>Choose your city</option>
+           <option *ngFor="let flight of flights" [ngValue]="flight.flightId">{{flight.carrierName}}</option>
+        </select> 
+       </div>
+      </div>
+
+      <div formGroupName="schedule">
+
+        <div class="form-group">
+          <label for="schedule.arraivalTime">Arrival Time:</label>
+          <input type="time" formControlName="arraivalTime" placeholder="Arrival Time" name="arraivalTime" class="form-control" id="username" >
+        </div>
+        <div class="form-group">
+          <label for="departureTime">Departure Time:</label>
+          <input type="time" formControlName="departureTime" placeholder="Departure Time" name="departureTime" class="form-control" id="departureTime" >
+        </div>
+        <div formGroupName="destinationAirport">
+         
+          <label for="id"> Destination Airport:</label> 
+            <div class="form-group">
+              <select class="custom-select"  formControlName="id">
+               <option value="" disabled>Choose Destination Airport</option>
+               <option *ngFor="let airport of airports" [ngValue]="airport.id">{{airport.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="scheduleDate">Scheduled Date:</label>
+          <input type="date" formControlName="scheduleDate" value="{{ this.scheduledFlight.schedule.scheduleDate | date:'yyyy-MM-dd' }}" placeholder="Scheduled Date" name="scheduleDate" class="form-control" id="scheduleDate" >
+        </div>
+        <div formGroupName="sourceAirport">
+          Source Airport:
+          <label for="id"> Source Airport:</label> 
+          <div class="form-group">
+            <select class="custom-select"  formControlName="id">
+             <option value="" disabled>Choose Source Airport</option>
+             <option *ngFor="let airport of airports" [ngValue]="airport.id">{{airport.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      </div>
+
+     
+      <!-- <div class="form-group">
+         <select class="custom-select"  formControlName="flightId">
+          <option value="" disabled>Choose your city</option>
+          <option *ngFor="let flight of flights" [ngValue]="flight.flightId">{{flight.flightId}}</option>
+       </select> 
+      </div> -->
+  
+      
+      
+  
+      <div class="form-group">
+      <input type="submit" value="Update" class="btn btn-success">
+    </div>
+    </form>
+  </div>
+</div>
+</div>

@@ -1,0 +1,10 @@
+.background-wrapper{
+        background-image: url(/assets/Img/back.jpg);
+        width: 25cmc;
+        height: 25cm;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        position: relative;
+        width: 100%;
+    }

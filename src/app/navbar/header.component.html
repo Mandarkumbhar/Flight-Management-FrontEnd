@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+
+<html>
+	 <head>
+		<title>Flight Management System</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   </head>
+	<body>
+    <div class="background-wrapper">
+				<nav class="navbar navbar-inverse" style="border-radius:0px !important; margin:0;border: 0">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>                       
+						  </button>
+						  <a class="navbar-brand" routerLink="/welcome">Flight Management System</a>
+						</div>
+						<div class="collapse navbar-collapse" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a routerLink="/" class="nav-link">Book</a></li>
+                				<li><a routerLink="/AboutUs" class="nav-link">About Us</a></li>
+                				<li><a routerLink="/ContactUs" class="nav-link">Contact Us</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a *ngIf="loginService.isUserLoggedIn()">Hi {{ngAfterViewInit()}} !</a></li>
+								<li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link"><span class="fa fa-user-circle"></span> Login</a></li>
+                				<li><a *ngIf="!loginService.isUserLoggedIn()"  routerLink="/signup"><span class="glyphicon glyphicon-log-in"></span> SignUp</a></li>
+                				<li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+              				</ul>
+						</div>	
+					</div>
+				</nav>
+       </div>
+      </body>
+     </html>

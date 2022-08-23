@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" (click)="adminHome()">Home</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link"
+        (click)="flights()"
+           routerLinkActive="active">View Flights</a>
+      </li>
+      
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"
+          (click)="addFlights()"
+             routerLinkActive="active">Add Flights</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"
+          [routerLink]="['/admin','scheduleFlight','add']"
+             routerLinkActive="active">Schedule Flight</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"
+          [routerLink]="['/admin','scheduleFlight']"
+             routerLinkActive="active">View Scheduled Flights</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"
+          (click)="bookings()"
+             routerLinkActive="active">View Bookings</a>
+        </li>
+        
+      </ul>
+      
+   
+  </nav>
+  <div class="container">
+    <div class="row">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

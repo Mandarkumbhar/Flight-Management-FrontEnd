@@ -1,0 +1,112 @@
+<div class="card">
+    <div class="card-header">
+      Scheduled Flights
+    </div>
+  
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">Filter by:</div>
+        <div class="col-md-4">
+          <input type="text"
+                  />
+        </div>
+      </div>
+      <div class="row"
+           >
+        <div class="col-md-6">
+          <h6>Filtered by: </h6>
+        </div>
+      </div>
+
+
+
+<!-- <div class="card-columns">
+   
+    <div class="card bg-light" *ngFor="let sf of scheduledFlights">
+      <div class="card-body text-left"  >
+        <div class="row">
+        <div class="col-sm-6">
+        <p class="card-text">Scheduled Flight No : {{sf.scheduledFlightIdLong}}</p>
+        <p class="card-text">Scheduled Flight Name : {{sf.flight.carrierName}}</p>
+        <p class="card-text">Source Airport : {{sf.schedule.sourceAirport.name}}</p>
+        <p class="card-text">Destination Airport : {{sf.schedule.destinationAirport.name}}</p>
+        <p class="card-text">Schedule Date : {{sf.schedule.scheduleDate}}</p>
+      </div>
+      <div class="col-sm-6">
+        <p class="card-text">Arraival Time : {{sf.schedule.arraivalTime}}</p>
+        <p class="card-text">Departure Time : {{sf.schedule.departureTime}}</p>
+        <p class="card-text">Available Seats : {{sf.availableSeats}}</p>
+        <p class="card-text">Cost : 1500rs</p>
+        <p class="card-text">Status : Cancelled</p>
+      </div>
+      <div class="col-sm-6">
+      <button type="button" class="btn btn-primary">Primary</button>
+    </div>
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-danger">Danger</button>
+    </div>
+    </div>
+
+      </div>
+    </div>
+    
+  </div> -->
+
+  <div class="table-responsive">
+    <table class="table mb-0"
+           *ngIf="scheduledFlights && scheduledFlights.length">
+      <thead>
+        <tr>
+          <!--<th>
+            <button class="btn btn-outline-primary btn-sm"
+                    (click)="toggleImage()">
+              {{showImage ? "Hide" : "Show"}} Image
+            </button>
+          </th>-->
+          <th>Flight Number</th>
+          <th>Flight Name</th>
+          <th>Source Airport</th>
+          <th>Destination Airport</th>
+          <!--<th>5 Star Rating</th>-->
+          <th>Schedule Date</th>
+          <th>Arraival Time</th>
+          <th>Departure Time</th>
+          <th>Available Seats</th>
+          <th>Cost</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sf of scheduledFlights">
+          
+          <td>{{sf.scheduledFlightIdLong}}</td>
+          <td>
+            {{sf.flight.carrierName}}
+          </td>
+          <td>{{sf.schedule.sourceAirport.name}}</td>
+          <td>{{sf.schedule.destinationAirport.name}}</td>
+          <td>{{sf.schedule.scheduleDate}}</td>
+          <td>{{sf.schedule.arraivalTime}}</td>
+          <td>{{sf.schedule.departureTime}}</td>
+          <td>{{sf.availableSeats}}</td>
+          <td>{{sf.cost}}</td>
+          <td>{{sf.scheduledStatus}}</td>
+          
+          <td>
+            <button class="btn btn-outline-primary btn-sm"
+                    [routerLink]="['/admin','scheduleFlight', sf.scheduledFlightIdLong, 'edit']">
+              Edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="onDelete(sf)">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,52 @@
+<body>
+<div class="background-wrapper">
+  <div class="container-fluid">
+    <header>
+      <h2>Contact Us</h2>
+      <hr>
+    </header>
+  </div>
+  <!--panel-->
+ 
+  <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel-group panel-transparent">
+          <div class="panel panel-default panel-transparent">
+              <div class="panel-heading">
+                  <legend id="a1"><b>Contact Information</b></legend>
+              </div>
+              <div class="panel-body">
+                  <form class="form-horizontal"  #f="ngForm">
+                          <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control trans-input-area" placeholder="Email"  id="email" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="name">Name</label>
+                              <input type="text" class="form-control trans-input-area" placeholder="Name" name="" id="name" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="Country">Country</label>
+                              <input type="text" class="form-control trans-input-area" placeholder="Country" name="" id="Country" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="subject">Message</label>
+                              <textarea id="subject" class="trans-input-area" placeholder="Write something.." style="height:200px; width: 100%"></textarea>
+                          </div>
+                          </form>
+
+                          <div class="input-group-btn">
+                              <button class="btn btn-block trans-input-area" type="submit" (click)="ngAfterViewInit()"><i  class="glyphicon glyphicon-send"></i> Send</button>
+                          </div>
+                          
+                          <br>
+                           
+                          <div class="alert alert-success" *ngIf="send">
+                                Response Recorded! 
+                          </div>                   
+              </div>
+          </div>
+      </div>
+  </div>
+  <br>
+</div>
+</body>

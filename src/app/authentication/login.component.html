@@ -1,0 +1,74 @@
+<body>
+      <div class="background-wrapper">
+        <div class="col-md-12">
+        
+          <div class="card card-container">
+            <div class="card-header">
+              <header id="h1">
+                <b>Login</b>
+              </header>
+            </div>
+              <br>
+            <div class="card-body">
+              <img
+              id="profile-img"
+              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+              class="profile-img-card"
+            />
+            <form
+              name="form"
+              
+              #f="ngForm"
+              novalidate
+            >
+              <div class="form-group">
+                <label for="userName">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="userName"
+                  [(ngModel)]="form.userName"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  [(ngModel)]="userName"
+                  #user="ngModel"
+                />
+      
+                <div class="alert-danger" *ngIf="user.errors && f.submitted">
+                  <div *ngIf="user.errors.required">Username is required</div>
+                  <div *ngIf="user.errors.minlength">Username must be at least 3 characters</div>
+                  <div *ngIf="user.errors.maxlength">Username must be at most 20 characters</div>
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  required
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  [(ngModel)]="password"
+                  #pass="ngModel"
+                  
+                />
+                
+                <div class="alert-danger" *ngIf="pass.errors && f.submitted">
+                  <div *ngIf="pass.errors.required">Password is required</div>
+                  <div *ngIf="pass.errors.pattern">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
+                </div> 
+              </div>
+        
+        
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)=checkLogin()>Login</button>
+              </div>
+          </form>
+          </div>
+          </div>
+          </div>
+      </div>
+      </body>

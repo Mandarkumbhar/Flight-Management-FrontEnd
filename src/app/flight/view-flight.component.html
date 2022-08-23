@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">Filter by:</div>
+        <div class="col-md-4">
+          <input type="text"
+                 [(ngModel)]="listFilter" />
+        </div>
+      </div>
+      <div class="row"
+           *ngIf="listFilter">
+        <div class="col-md-6">
+          <h4>Filtered by: {{listFilter}}</h4>
+        </div>
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table mb-0"
+               *ngIf="flights && flights.length">
+          <thead>
+            <tr>
+              <th>Flight Number</th>
+              <th>Carrier Name</th>
+              <th>Flight Model</th>
+              <th>Seating Capacity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let flight of filteredFlights">
+              <td>{{ flight.flightId }}</td>
+              <td> {{ flight.carrierName }}</td>
+              <td>{{ flight.flightModel }}</td>
+              <td>{{ flight.seatCapacity }}</td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm"
+                        [routerLink]="['/admin','flights', flight.flightId, 'edit']">
+                  Edit
+                </button>
+                <button type="Button" value="Cancel" class="btn btn-danger" (click)="onDelete(flight)">
+                        <!--[routerLink]="['/admin','flights', flight.flightId, 'edit']"-->
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  
+  <div *ngIf="errorMessage"
+       class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
+  
